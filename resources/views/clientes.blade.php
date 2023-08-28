@@ -45,16 +45,15 @@
                                 <td>{{ $cliente->nome }}</td>
                                 <td>{{ $cliente->email }}</td>
                                 <td>
-                                    <form action="/clientes/{{ $cliente->id }}" method="POST">
+                                    <form action="{{route('store.cliente')}}" method="POST">
                                         @csrf
-                                        @method('DELETE')
                                         <button type="submit"
                                             class="bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-800 focus:outline-none">Del</button>
                                     </form>
                                 </td>
 
                                 <td>
-                                    <a href="{{ asset('pasta_clientes/' . Str::slug($cliente->nome) . '_' . $cliente->id) }}"
+                                    <a href="{{ asset('storage/clientes/' . Str::slug($cliente->nome) . '_' . $cliente->id) }}"
                                         class="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-800 focus:outline-none">
                                         Link
                                     </a>

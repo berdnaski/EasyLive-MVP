@@ -28,7 +28,7 @@
         <h1 class="text-2xl font-bold text-white">Gerenciador de Clientes</h1>
     </div>
     <div class="bg-red-400 p-8 h-screen flex items-center justify-center">
-        <form action="/clientes" method="POST" class="flex flex-col w-full md:w-1/2 p-8 rounded-lg">
+        <form action="{{route('store.cliente')}}" method="POST" enctype='multipart/form-data' class="flex flex-col w-full md:w-1/2 p-8 rounded-lg">
             @csrf
 
             <div class="mb-4 md:mb-8">
@@ -38,7 +38,7 @@
                     id="nome" name="nome" type="text" required placeholder="Nome do cliente">
             </div>
             <div class="mb-4">
-                <label class="block text-black  text-sm md:text-xl font-bold mb-2" for="email">Email:</label>
+                <label class="block text-black text-sm md:text-xl font-bold mb-2" for="email">Email:</label>
                 <input
                     class="border rounded w-full py-2 px-3 md:py-4 text-black placeholder-black focus:outline-none focus:border-purple-500"
                     id="email" name="email" type="email" required placeholder="Email do cliente">

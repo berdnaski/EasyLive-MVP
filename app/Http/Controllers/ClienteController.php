@@ -21,22 +21,17 @@ class ClienteController extends Controller
             'email' => 'required|email|unique:clientes,email',
         ]);
 
-        $cliente = new Cliente();
-        $cliente->nome = $request->nome;
-        $cliente->email = $request->email;
-        $cliente->save();
+        $cliente = Cliente::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+        ]);
 
-        $baseDirectory = public_path('clientes');
+        $baseDirectory = storage_path('app/public/clientes');
         $clienteFolder = $baseDirectory . '/' . Str::slug($cliente->nome) . '_' . $cliente->id;
 
         if (!File::exists($clienteFolder)) {
-            File::makeDirectory($clienteFolder, 0777, true);
-
+            File::makeDirectory($clienteFolder, 0775, true);
             chmod($clienteFolder, 0775);
-
-            chown($clienteFolder, 'www-data');
-
-            chgrp($clienteFolder, 'www-data');
         }
 
         return redirect('/clientes')->with('success', 'Cliente cadastrado com sucesso!');

@@ -14,22 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/create', function() {
+Route::get('/', function() {
     return view('create');
 });
 
-Route::post('/clientes', [ClienteController::class, 'cadastrar']);
+Route::post('/clientes', [ClienteController::class, 'cadastrar'])->name('store.cliente');
 Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes');
 Route::delete('/clientes/{id}', [ClienteController::class, 'destroy']);
 
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('/register', 'Auth\RegisterController@register');
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('/login', 'Auth\LoginController@login');
+// Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::post('/register', 'Auth\RegisterController@register');
+// Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+// Route::post('/login', 'Auth\LoginController@login');
 
 
 
